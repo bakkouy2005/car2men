@@ -1,0 +1,11 @@
+created:
+    - database/factories/CarpostFactory.php
+    - database/factories/OrderFactory.php
+    - database/migrations/2026_03_31_225631_create_carposts_table.php
+    - database/migrations/2026_03_31_225632_create_orders_table.php
+    - app/Models/Carpost.php
+    - app/Models/Order.php
+models:
+    User: { username: string, name: string, email: 'string unique', password: string, role: string, credit: 'decimal(10,2)', relationships: { hasMany: 'Carpost, Order' } }
+    Carpost: { seller_id: id, title: string, description: text, image: 'string nullable', price: 'decimal(10,2)', brand: string, model: string, build_year: integer, kilometer: integer, horsepower: integer, previous_owners: integer, status: string, relationships: { hasOne: Order } }
+    Order: { buyer_id: id, seller_id: id, carpost_id: id, total_price: 'decimal(10,2)', status: string, relationships: { belongsTo: Carpost } }

@@ -1,0 +1,27 @@
+models:
+  Carpost:
+    seller_id: id
+    title: string
+    description: text
+    image: string nullable
+    price: decimal(10,2)
+    brand: string
+    model: string
+    build_year: integer
+    kilometer: integer
+    horsepower: integer
+    previous_owners: integer
+    status: string
+
+    relationships:
+      hasOne: Order
+
+  Order:
+    buyer_id: id
+    seller_id: id
+    carpost_id: id
+    total_price: decimal(10,2)
+    status: string
+
+    relationships:
+      belongsTo: Carpost
